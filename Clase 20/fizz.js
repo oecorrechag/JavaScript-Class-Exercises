@@ -1,4 +1,4 @@
-var numeros = 100
+var numeros = 100;
 
 function esDivisible(num, divisor){
     if(num % divisor == 0){
@@ -11,10 +11,10 @@ function esDivisible(num, divisor){
 
 for(var i = 1; i <= 100; i++){
     if (esDivisible(i,3)){
-        document.write('Fizz ')
+        document.write('Fizz ');
     }
     if (esDivisible(i,5)){
-        document.write('Buzz')
+        document.write('Buzz');
     }
     if (!esDivisible(i,3) && !esDivisible(i,5)){
         document.write(i);
