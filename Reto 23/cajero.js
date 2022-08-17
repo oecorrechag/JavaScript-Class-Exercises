@@ -1,8 +1,20 @@
+var imagenes = []
+imagenes[50] = 'vaca.png';
+imagenes[20] = 'pollo.png';
+imagenes[10] = 'cerdo.png';
+
 class Billete{
     constructor(v,c){
         this.valor = v; 
         this.cantidad = c;
+        this.imagen = new Image();
+        this.imagen.src = imagenes[this.valor];
     }
+
+    mostrar(){
+        document.body.appendChild(this.imagen);
+    }
+
 }
 
 var caja = [];
@@ -18,6 +30,7 @@ var dinero;
 // variables para la funcion entregarDinero
 var div = 0;
 var papeles = 0;
+var restante = 210;
 
 function entregarDinero(){
 
@@ -34,13 +47,14 @@ function entregarDinero(){
             else{
                 papeles = div;
             }
-            entregado.push(new Billete(bi.valor, papeles));
+            entregado.push(new Billete(bi.valor, papeles, bi.valor));
             dinero = dinero - (bi.valor * papeles);
+            restante = restante - (bi.valor * papeles);
 
         }
     }
 
-    if(dinero > 0){
+    if(dinero > 0 || restante < 0){
         resultado.innerHTML = "Fondos insuficientes";
     }
     else{
@@ -51,8 +65,12 @@ function entregarDinero(){
         }
     }
 
+    console.log("dinero restante " + restante)
+
 }
+
 
 var resultado = document.getElementById("resultado");
 var b = document.getElementById("extraer");
 b.addEventListener("click", entregarDinero)
+
